@@ -17,6 +17,7 @@ jobs:
 
       - name: Clone source repo (sparse)
         run: |
+          rm -rf /tmp/siyuan-source
           git clone --depth 1 --filter=blob:none --sparse \
             https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus.git \
             /tmp/siyuan-source
