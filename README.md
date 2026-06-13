@@ -1,6 +1,6 @@
 # god13less-skills
 
-个人 Skills 仓库。通过安装脚本将自定义 Skills 部署到本地。
+个人 Skills 仓库。通过安装脚本将自定义 Skills 部署到 OpenCode / Claude / Codex。
 
 ## 安装
 
@@ -12,6 +12,14 @@ chmod +x install.sh
 ```
 
 安装完成后，重启对应应用即可使用。
+
+### 支持的平台
+
+| 平台 | 安装路径 |
+|------|---------|
+| OpenCode | `~/.config/opencode/skills/` |
+| Claude | `~/.claude/skills/` |
+| Codex | `~/.agents/skills/`
 
 ## 更新
 

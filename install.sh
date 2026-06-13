@@ -5,40 +5,57 @@ set -e
 # god13less-skills - Skills 安装脚本
 # ============================================
 
-DEST_DIR="${1:-$HOME/.config/opencode/skills}"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# 支持的平台及对应 skills 目录
+PLATFORMS=(
+    "opencode:$HOME/.config/opencode/skills"
+    "claude:$HOME/.claude/skills"
+    "codex:$HOME/.agents/skills"
+)
 
 echo "╔════════════════════════════════════════╗"
 echo "║   god13less-skills 安装工具           ║"
 echo "╚════════════════════════════════════════╝"
 echo ""
-echo "安装目标: $DEST_DIR"
-echo ""
 
-mkdir -p "$DEST_DIR"
+install_to() {
+    local platform=$1
+    local dest=$2
 
-SKILL_COUNT=0
-for skill_dir in "$SCRIPT_DIR/skills"/*/; do
-    [ -d "$skill_dir" ] || continue
-    skill_name=$(basename "$skill_dir")
+    mkdir -p "$dest"
 
-    # 移除旧链接
-    rm -rf "$DEST_DIR/$skill_name"
+    local count=0
+    for skill_dir in "$SCRIPT_DIR/skills"/*/; do
+        [ -d "$skill_dir" ] || continue
+        local skill_name=$(basename "$skill_dir")
 
-    # 优先使用符号链接，失败则复制
-    if ln -sf "$skill_dir" "$DEST_DIR/$skill_name" 2>/dev/null; then
-        echo "  ✓ $skill_name (symlink)"
-    else
-        cp -r "$skill_dir" "$DEST_DIR/$skill_name"
-        echo "  ✓ $skill_name (copied)"
-    fi
+        rm -rf "$dest/$skill_name"
 
-    SKILL_COUNT=$((SKILL_COUNT + 1))
+        if ln -sf "$skill_dir" "$dest/$skill_name" 2>/dev/null; then
+            echo "  ✓ $skill_name (symlink)"
+        else
+            cp -r "$skill_dir" "$dest/$skill_name"
+            echo "  ✓ $skill_name (copied)"
+        fi
+
+        count=$((count + 1))
+    done
+
+    echo "  → 已安装到 $dest ($count 个 Skill)"
+}
+
+for entry in "${PLATFORMS[@]}"; do
+    platform="${entry%%:*}"
+    dest="${entry#*:}"
+
+    echo "[$platform]"
+    install_to "$platform" "$dest"
+    echo ""
 done
 
-echo ""
 echo "════════════════════════════════════════"
-echo "  安装完成！共安装 $SKILL_COUNT 个 Skill"
+echo "  安装完成"
 echo "════════════════════════════════════════"
 echo ""
 echo "后续操作:"
