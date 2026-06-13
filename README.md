@@ -1,28 +1,6 @@
 # god13less-skills
 
-个人 Skills 仓库。将自定义 Skills 部署到 OpenCode / Claude / Codex。
-
-## 安装
-
-将 `skills/` 下的目录 symlink 或复制到对应平台的 skills 路径：
-
-| 平台 | 安装路径 |
-|------|---------|
-| OpenCode | `~/.config/opencode/skills/` |
-| Claude | `~/.claude/skills/` |
-| Codex | `~/.agents/skills/` |
-
-```bash
-git clone https://github.com/god13less/god13less-skills.git
-ln -s "$(pwd)/god13less-skills/skills/hello-world" ~/.config/opencode/skills/hello-world
-```
-
-## 更新
-
-```bash
-cd god13less-skills
-git pull
-```
+个人 Skills 仓库。
 
 ## Skills 列表
 
@@ -34,7 +12,6 @@ git pull
 
 1. 在 `skills/` 下创建新目录
 2. 添加 `SKILL.md`（格式见下方）
-3. symlink 到目标平台路径
 
 ### SKILL.md 格式
 
