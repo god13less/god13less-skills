@@ -2,7 +2,7 @@
 set -e
 
 # ============================================
-# god13less-skills - OpenCode Skills 安装脚本
+# god13less-skills - Skills 安装脚本
 # ============================================
 
 DEST_DIR="${1:-$HOME/.config/opencode/skills}"

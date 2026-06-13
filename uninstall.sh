@@ -2,7 +2,7 @@
 set -e
 
 # ============================================
-# god13less-skills - 卸载脚本
+# god13less-skills - Skills 卸载脚本
 # ============================================
 
 DEST_DIR="${1:-$HOME/.config/opencode/skills}"

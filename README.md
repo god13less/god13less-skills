@@ -1,6 +1,6 @@
 # god13less-skills
 
-个人 OpenCode Skills 仓库。通过安装脚本将自定义 Skills 部署到 OpenCode。
+个人 Skills 仓库。通过安装脚本将自定义 Skills 部署到本地。
 
 ## 安装
 
@@ -11,7 +11,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-安装完成后，重启 OpenCode 即可使用。
+安装完成后，重启对应应用即可使用。
 
 ## 更新
 
