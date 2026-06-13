@@ -26,8 +26,13 @@ jobs:
 
       - name: Sync skills directory
         run: |
-          rm -rf skills/siyuan-sisyphus
-          cp -r /tmp/siyuan-source/skills/siyuan-sisyphus skills/siyuan-sisyphus
+          SRC=/tmp/siyuan-source/skills/siyuan-sisyphus
+          # Remove old siyuan skills
+          for d in skills/siyuan-*/; do rm -rf "$d"; done
+          # Copy each sub-skill to flat skills/
+          for d in "$SRC"/*/; do
+            cp -r "$d" skills/
+          done
           rm -rf /tmp/siyuan-source
 
       - name: Commit if changed
@@ -40,6 +45,6 @@ jobs:
             exit 0
           fi
 
-          git add skills/siyuan-sisyphus
+          git add skills/siyuan-*
           git commit -m "sync: update siyuan-sisyphus skills from upstream"
           git push
