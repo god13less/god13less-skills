@@ -84,7 +84,7 @@ Top 5 errors to avoid:
 
 ```
 n8n-code-javascript/
-├── SKILL.md (500 lines)
+├── SKILL.md
 │   Overview, quick start, mode selection, best practices
 │   - Mode selection guide (All Items vs Each Item)
 │   - Data access patterns overview
@@ -93,7 +93,7 @@ n8n-code-javascript/
 │   - Error prevention overview
 │   - Quick reference checklist
 │
-├── DATA_ACCESS.md (400 lines)
+├── DATA_ACCESS.md
 │   Complete data access patterns
 │   - $input.all() - Most common (26% usage)
 │   - $input.first() - Very common (25% usage)
@@ -103,7 +103,7 @@ n8n-code-javascript/
 │   - Choosing the right pattern
 │   - Common mistakes to avoid
 │
-├── COMMON_PATTERNS.md (600 lines)
+├── COMMON_PATTERNS.md
 │   10 production-tested patterns
 │   - Pattern 1: Multi-source Aggregation
 │   - Pattern 2: Regex Filtering
@@ -117,7 +117,7 @@ n8n-code-javascript/
 │   - Pattern 10: String Aggregation
 │   - Pattern selection guide
 │
-├── ERROR_PATTERNS.md (450 lines)
+├── ERROR_PATTERNS.md
 │   Top 5 errors with solutions
 │   - Error #1: Empty Code / Missing Return (38%)
 │   - Error #2: Expression Syntax Confusion (8%)
@@ -128,7 +128,7 @@ n8n-code-javascript/
 │   - Quick error reference
 │   - Debugging tips
 │
-├── BUILTIN_FUNCTIONS.md (450 lines)
+├── BUILTIN_FUNCTIONS.md
 │   Complete built-in function reference
 │   - $helpers.httpRequest() API reference
 │   - DateTime (Luxon) complete guide
@@ -142,7 +142,7 @@ n8n-code-javascript/
     Skill metadata and overview
 ```
 
-**Total**: ~2,400 lines across 6 files
+**Total**: 6 files
 
 ---
 
