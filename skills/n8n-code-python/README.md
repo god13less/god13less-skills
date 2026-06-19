@@ -16,7 +16,7 @@ Python in n8n has **NO external libraries** (no requests, pandas, numpy).
 - You're more comfortable with Python than JavaScript
 
 **When to use JavaScript** (recommended):
-- HTTP requests ($helpers.httpRequest available)
+- HTTP requests (this.helpers.httpRequest available)
 - Date/time operations (Luxon library included)
 - Most data transformations
 - When in doubt

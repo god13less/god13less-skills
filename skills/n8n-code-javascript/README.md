@@ -18,7 +18,7 @@ Teaches how to write effective JavaScript in n8n Code nodes, avoid common errors
 - "code node javascript"
 - "$input syntax"
 - "$json syntax"
-- "$helpers.httpRequest"
+- "this.helpers.httpRequest" / "$helpers.httpRequest"
 - "DateTime luxon"
 - "code node error"
 - "webhook data code"
@@ -71,7 +71,7 @@ Top 5 errors to avoid:
 5. **Missing null checks** (crashes on undefined)
 
 ### Built-in Functions
-- **$helpers.httpRequest()** - Make HTTP requests
+- **this.helpers.httpRequest()** - Make HTTP requests (the bare `$helpers` global is undefined in the task-runner sandbox; prefer the HTTP Request node for anything beyond a trivial unauthenticated GET)
 - **DateTime (Luxon)** - Advanced date/time operations
 - **$jmespath()** - Query JSON structures
 - **$getWorkflowStaticData()** - Persistent storage
@@ -130,7 +130,7 @@ n8n-code-javascript/
 │
 ├── BUILTIN_FUNCTIONS.md
 │   Complete built-in function reference
-│   - $helpers.httpRequest() API reference
+│   - this.helpers.httpRequest() API reference
 │   - DateTime (Luxon) complete guide
 │   - $jmespath() JSON querying
 │   - $getWorkflowStaticData() persistent storage
@@ -172,7 +172,7 @@ n8n-code-javascript/
 - Pattern selection guide
 
 ### Built-in Functions
-- Complete $helpers.httpRequest() reference
+- Complete this.helpers.httpRequest() reference
 - DateTime/Luxon operations (formatting, parsing, arithmetic)
 - $jmespath() for JSON queries
 - Persistent storage with $getWorkflowStaticData()
@@ -298,7 +298,7 @@ const value = $json.field;
 - Batch processing → $input.all() + map/filter
 - Single item → $input.first()
 - Aggregation → reduce()
-- HTTP requests → $helpers.httpRequest()
+- HTTP requests → this.helpers.httpRequest()
 - Date handling → DateTime (Luxon)
 
 ### Error Prevention
@@ -323,7 +323,7 @@ const value = $json.field;
 **5 test scenarios** covering:
 1. Webhook body gotcha (most common mistake)
 2. Return format error (missing array wrapper)
-3. HTTP request with $helpers.httpRequest()
+3. HTTP request with this.helpers.httpRequest()
 4. Aggregation pattern with $input.all()
 5. Expression syntax confusion (using `{{}}`)
 
