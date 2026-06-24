@@ -6,8 +6,8 @@
 
 | Skill | 分组 | 描述 |
 |-------|------|------|
-| [hello-world](./skills/hello-world/) | 示例 | 验证安装成功 |
 | [siyuan-sisyphus](./skills/siyuan-sisyphus/) | siyuan | 思源笔记 CLI 顶层 Skill，安装/读取子 Skill |
+| [siyuan-sisyphus-llm-wiki](./skills/siyuan-sisyphus-llm-wiki/) | siyuan | Karpathy LLM Wiki 工作流，AI Agent 维护结构化知识库 |
 | [siyuan-markup-guide](./skills/siyuan-markup-guide/) | siyuan | 思源 Markdown 标记指南 |
 | [siyuan-sisyphus-browse-read](./skills/siyuan-sisyphus-browse-read/) | siyuan | 思源笔记浏览与阅读 |
 | [siyuan-sisyphus-create-edit](./skills/siyuan-sisyphus-create-edit/) | siyuan | 思源笔记创建与编辑 |
@@ -26,6 +26,7 @@
 | [n8n-workflow-patterns](./skills/n8n-workflow-patterns/) | n8n | n8n 工作流架构模式 |
 
 > siyuan-sisyphus 系列: [yangtaihong59/siyuan-plugins-mcp-sisyphus](https://github.com/yangtaihong59/siyuan-plugins-mcp-sisyphus)
+> siyuan-sisyphus-llm-wiki: [god13less/siyuan-sisyphus-llm-wiki](https://github.com/god13less/siyuan-sisyphus-llm-wiki)
 > n8n 系列: [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills)
 > 由 GitHub Actions 每日自动同步。
 
@@ -34,13 +35,13 @@
 ```
 god13less-skills/
 ├── .github/workflows/
-│   ├── sync-siyuan-skills.yml    # siyuan 自动同步
-│   └── sync-n8n-skills.yml       # n8n 自动同步
+│   ├── sync-siyuan-skills.yml          # siyuan 自动同步
+│   ├── sync-sisyphus-llm-wiki.yml      # siyuan-sisyphus-llm-wiki 自动同步
+│   └── sync-n8n-skills.yml             # n8n 自动同步
 ├── skills/
-│   ├── hello-world/
-│   ├── siyuan-sisyphus/          # 思源系列 (9 skills)
-│   │   └── ...                   # siyuan-* (8 more)
-│   └── n8n-code-javascript/      # n8n 系列 (8 skills)
-│       └── ...                   # n8n-* (7 more)
+│   ├── siyuan-sisyphus/                # 思源系列 (10 skills)
+│   │   └── ...                         # siyuan-* (9 more)
+│   └── n8n-code-javascript/            # n8n 系列 (8 skills)
+│       └── ...                         # n8n-* (7 more)
 └── README.md
 ```
