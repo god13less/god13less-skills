@@ -15,14 +15,12 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v6
 
-      - name: Clone source repo (sparse)
+      - name: Clone source repo
         run: |
           rm -rf /tmp/siyuan-sisyphus-llm-wiki
-          git clone --depth 1 --filter=blob:none --sparse \
+          git clone --depth 1 \
             https://github.com/god13less/siyuan-sisyphus-llm-wiki.git \
             /tmp/siyuan-sisyphus-llm-wiki
-          cd /tmp/siyuan-sisyphus-llm-wiki
-          git sparse-checkout set SKILL.md templates
 
       - name: Sync skill files
         run: |
