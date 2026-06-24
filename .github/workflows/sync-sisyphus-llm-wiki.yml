@@ -1,0 +1,49 @@
+name: Sync siyuan-sisyphus-llm-wiki
+
+on:
+  schedule:
+    # 每天 UTC 2:00 / 北京时间 10:00
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v6
+
+      - name: Clone source repo (sparse)
+        run: |
+          rm -rf /tmp/siyuan-sisyphus-llm-wiki
+          git clone --depth 1 --filter=blob:none --sparse \
+            https://github.com/god13less/siyuan-sisyphus-llm-wiki.git \
+            /tmp/siyuan-sisyphus-llm-wiki
+          cd /tmp/siyuan-sisyphus-llm-wiki
+          git sparse-checkout set SKILL.md templates
+
+      - name: Sync skill files
+        run: |
+          SRC=/tmp/siyuan-sisyphus-llm-wiki
+          DST=skills/siyuan-sisyphus-llm-wiki
+          mkdir -p "$DST/templates"
+
+          cp "$SRC/SKILL.md" "$DST/SKILL.md"
+          cp -r "$SRC/templates/"* "$DST/templates/"
+          rm -rf /tmp/siyuan-sisyphus-llm-wiki
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes, skipping commit."
+            exit 0
+          fi
+
+          git add skills/siyuan-sisyphus-llm-wiki/
+          git commit -m "sync: update siyuan-sisyphus-llm-wiki from upstream"
+          git push
