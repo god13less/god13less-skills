@@ -27,8 +27,11 @@ jobs:
       - name: Sync skills directory
         run: |
           SRC=/tmp/siyuan-source/skills/siyuan-sisyphus
-          # Remove old siyuan skills
-          for d in skills/siyuan-*/; do rm -rf "$d"; done
+          # Remove old siyuan skills (skip llm-wiki managed by separate workflow)
+          for d in skills/siyuan-*/; do
+            [[ "$d" == "skills/siyuan-sisyphus-llm-wiki/" ]] && continue
+            rm -rf "$d"
+          done
           # Copy each sub-skill to flat skills/
           for d in "$SRC"/*/; do
             cp -r "$d" skills/
@@ -45,6 +48,6 @@ jobs:
             exit 0
           fi
 
-          git add skills/siyuan-*
+          git add -A skills/siyuan-*
           git commit -m "sync: update siyuan-sisyphus skills from upstream"
           git push
